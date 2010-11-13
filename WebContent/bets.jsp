@@ -47,9 +47,8 @@
             <td onclick="changeBG(this.id)" width="80" align="center" id="1 2">Tie</td>
             <td onclick="changeBG(this.id)" width="160" align="center" id="1 3">cs</td>
         </tr>
-        <tr class="appear" id="row1-" style="visibility:collapse">
-        	<td align="center">Credits: <input type="text" size="10" /></td>
-            <td><input type="button" onclick="this.style="visibility:collapse"" value="BET"/></td>
+        <tr class="appear" id="row1-"style="visibility:collapse">
+        	<td colspan="2" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
             <td onclick="hideThis(this.parentNode.id)">hide</td>
         </tr>
         <tr class="gamesOp">
@@ -58,8 +57,7 @@
             <td onclick="changeBG(this.id)" align="center" id="2 3">cs</td>
         </tr>
         <tr class="appear" id="row2-" style="visibility:collapse">
-        	<td align="center">Credits: <input type="text" size="10" /></td>
-            <td><input type="button" value="BET" /></td>
+        	<td colspan="2" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
             <td onclick="hideThis(this.parentNode.id)">hide</td>
         </tr>
         <tr class="gamesOp">
@@ -68,8 +66,7 @@
             <td onclick="changeBG(this.id)" align="center" id="3 3">cs</td>
         </tr>
         <tr class="appear" id="row3-" style="visibility:collapse">
-        	<td align="center">Credits: <input type="text" size="10" /></td>
-            <td><input type="button" value="BET" /></td>
+        	<td colspan="2" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
             <td onclick="hideThis(this.parentNode.id)">hide</td>
         </tr>
         <tr class="gamesOp">
@@ -78,8 +75,7 @@
             <td onclick="changeBG(this.id)" align="center" id="4 3">cs</td>
         </tr>
         <tr class="appear" id="row4-" style="visibility:collapse">
-        	<td align="center">Credits: <input type="text" size="10" /></td>
-            <td><input type="button" value="BET" /></td>
+        	<td colspan="2" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
             <td onclick="hideThis(this.parentNode.id)">hide</td>
         </tr>
     </table>
