@@ -24,6 +24,10 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		this.mm = mm;
 	}
 	
+	public String getUsername(){
+		return user;
+	}
+	
 	public String login(String user, String pass) throws RemoteException{
 		return m.login(user, pass);
 		

@@ -3,8 +3,7 @@ import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.util.Hashtable;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,16 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ClientRMI.ClientInterface;
 import Server.CMInterface;
 import Server.MMInterface;
 import Server.MenuInterface;
 
 
-
-
-@SuppressWarnings("serial")
 public class Login extends HttpServlet{
+	
+	private static final long serialVersionUID = -8608034654794572382L;	
 	
 	MenuInterface m = null;
 	CMInterface cc = null;
@@ -35,11 +32,9 @@ public class Login extends HttpServlet{
 			cc = (CMInterface)LocateRegistry.getRegistry("localhost", 7000).lookup("ClientManager");
 			mm = (MMInterface)LocateRegistry.getRegistry("localhost", 7000).lookup("MessageManager");
 		} catch (NotBoundException e) {
-			System.out.println("OIX");
 		} catch (RemoteException e) {
 			
 		}
-		
     }
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
@@ -48,9 +43,9 @@ public class Login extends HttpServlet{
 		String pass = request.getParameter("passcode");
 		String email = request.getParameter("email");
 		String login = "";
+		boolean loggedIn = false;
 		RequestDispatcher dispatcher;
 	    HttpSession session;
-	    
 		Client client = new Client(user,pass,m,cc,mm);
 		/* TODO: NÃO DEIXAR QUE O CLIENTE SE REGISTE SEM EMAIL*/
 		if(email==null){
@@ -59,24 +54,32 @@ public class Login extends HttpServlet{
 			
 			if(login.equals("User successfully authenticated.")){
 				session = request.getSession(true);
-				session.setAttribute("userinfo",client);
-				//m.subscribe(user, client);
+				session.setAttribute("user",client);
 				client.subscribe(user, client);
+				loggedIn = true;
 			}
 			
 		}else{
 			login = m.register(user, pass, email);
 			if(login.equals("Registration was successful")){
 				session = request.getSession(true);
-				session.setAttribute("userinfo",client);
-				//m.subscribe(user, client);
+				session.setAttribute("user",client);
 				client.subscribe(user, client);
+				loggedIn = true;
 			}
 		}
-		System.out.println(login);
-	    dispatcher = request.getRequestDispatcher("/bets.html");
+		
+		if(loggedIn){
+			dispatcher = request.getRequestDispatcher("/home.html");
+		}else if(!loggedIn && email==null){
+			dispatcher = request.getRequestDispatcher("/index.html");
+		}else{
+			dispatcher = request.getRequestDispatcher("/register.html");
+		}
+		
 		dispatcher.forward(request, response);
-	    }
+		
+	}
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
     	
