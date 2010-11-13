@@ -1,6 +1,6 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
-<jsp:include page="auth_verification.jsp"></jsp:include>
+
 
 <html>
 <head>
@@ -21,10 +21,18 @@
 		messagebean.setMessage(user.getUsername()+ " says: "+infoBean.getMessage());
 	}
 %>
-<form action="/BetAndUin/jsp/messageinfo.jsp" method="post">
-<input type="text" name="message" id="message" size="100">
-<br>
-<input type="submit" name="buttonsend" value="Send">
+<form name="sendMessage" action="/BetAndUin/jsp/messageinfo.jsp" method="post">
+	<input type="text" name="message" id="message" size="100">
+	<br>
+	<select name="chosen">
+		<%
+		String[] result = ((Servlets.Client)session.getAttribute("user")).getOnlineUsers();
+		for(int i=0;i<result.length;i++){
+			out.println("<option name=\""+result[i]+"\">"+ result[i] +"</option>");
+		}
+		%>
+	</select>
+	<input type="submit" name="buttonsend" value="Send">
 </form>
 </body>
 </html>

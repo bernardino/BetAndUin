@@ -2,6 +2,7 @@ package Servlets;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.LinkedList;
 
 import Server.CMInterface;
 import Server.MMInterface;
@@ -59,5 +60,20 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	public String[] getOnlineUsers(){
+		//LinkedList<String> result = new LinkedList<String>();
+		String aux = "";
+		String[] result = null;
+		
+		try {
+			aux = cc.showOnlineUsers(user);
+			result = aux.split("\n");
+			return result;
+			
+		} catch (RemoteException e) {
+			System.out.println("Could not connect to server!\nPlease wait.");
+			return null;
+		}
+	}
 }

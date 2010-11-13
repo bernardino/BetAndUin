@@ -6,8 +6,8 @@
 <html>
 
 <frameset rows="75%,30%">
-  <frame src="/BetAndUin/jsp/messageboard.jsp">
-  <frame src="/BetAndUin/jsp/messageinfo.jsp">
+  <frame src="/BetAndUin/jsp/messageboard.jsp" name="messageboard">
+  <frame src="/BetAndUin/jsp/messageinfo.jsp" name="messageinfo">
 </frameset>
 
 

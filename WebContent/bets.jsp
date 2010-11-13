@@ -36,47 +36,48 @@
 <br />
 	<table border="0">
     	<tr>
-        	<td style="font-family:Tahoma, Geneva, sans-serif" width="200">Home Team</td>
-            <td style="font-family:Tahoma, Geneva, sans-serif" width="200" align="right">Away Team</td>
+        	<td style="font-family:Tahoma, Geneva, sans-serif; color:#FFF;" width="200">Home Team</td>
+            <td style="font-family:Tahoma, Geneva, sans-serif; color:#FFF;" width="200" align="right">Away Team</td>
         </tr>
     </table>
     <br />
     <table id="games" cellpadding="10" cellspacing="5">
     	<tr class="gamesOp">
         	<td  onclick="changeBG(this.id)" width="160" align="center" id="1 1">as</td>
-            <td onclick="changeBG(this.id)" width="80" align="center" id="1 2">Tie</td>
-            <td onclick="changeBG(this.id)" width="160" align="center" id="1 3">cs</td>
+            <td onClick="changeBG(this.id)" width="80" align="center" id="1 2">Tie</td>
+            <td onClick="changeBG(this.id)" width="160" align="center" id="1 3">cs</td>
         </tr>
+        
         <tr class="appear" id="row1-"style="visibility:collapse">
         	<td colspan="2" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
-            <td onclick="hideThis(this.parentNode.id)">hide</td>
+            <td onClick="hideThis(this.parentNode.id)">hide</td>
         </tr>
         <tr class="gamesOp">
-        	<td onclick="changeBG(this.id)" align="center" id="2 1">as</td>
-            <td onclick="changeBG(this.id)" align="center" id="2 2">Tie</td>
-            <td onclick="changeBG(this.id)" align="center" id="2 3">cs</td>
+        	<td onClick="changeBG(this.id)" align="center" id="2 1">as</td>
+            <td onClick="changeBG(this.id)" align="center" id="2 2">Tie</td>
+            <td onClick="changeBG(this.id)" align="center" id="2 3">cs</td>
         </tr>
         <tr class="appear" id="row2-" style="visibility:collapse">
         	<td colspan="2" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
-            <td onclick="hideThis(this.parentNode.id)">hide</td>
+            <td onClick="hideThis(this.parentNode.id)">hide</td>
         </tr>
         <tr class="gamesOp">
-        	<td onclick="changeBG(this.id)" align="center" id="3 1">as</td>
-            <td onclick="changeBG(this.id)" align="center" id="3 2">Tie</td>
-            <td onclick="changeBG(this.id)" align="center" id="3 3">cs</td>
+        	<td onClick="changeBG(this.id)" align="center" id="3 1">as</td>
+            <td onClick="changeBG(this.id)" align="center" id="3 2">Tie</td>
+            <td onClick="changeBG(this.id)" align="center" id="3 3">cs</td>
         </tr>
         <tr class="appear" id="row3-" style="visibility:collapse">
         	<td colspan="2" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
-            <td onclick="hideThis(this.parentNode.id)">hide</td>
+            <td onClick="hideThis(this.parentNode.id)">hide</td>
         </tr>
         <tr class="gamesOp">
-        	<td onclick="changeBG(this.id)" align="center" id="4 1">as</td>
-            <td onclick="changeBG(this.id)" align="center" id="4 2">Tie</td>
-            <td onclick="changeBG(this.id)" align="center" id="4 3">cs</td>
+        	<td onClick="changeBG(this.id)" align="center" id="4 1">as</td>
+            <td onClick="changeBG(this.id)" align="center" id="4 2">Tie</td>
+            <td onClick="changeBG(this.id)" align="center" id="4 3">cs</td>
         </tr>
         <tr class="appear" id="row4-" style="visibility:collapse">
         	<td colspan="2" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
-            <td onclick="hideThis(this.parentNode.id)">hide</td>
+            <td onClick="hideThis(this.parentNode.id)">hide</td>
         </tr>
     </table>
     <br />
