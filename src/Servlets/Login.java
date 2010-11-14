@@ -44,7 +44,7 @@ public class Login extends HttpServlet{
 		String email = request.getParameter("email");
 		String login = "";
 		boolean loggedIn = false;
-		RequestDispatcher dispatcher;
+		RequestDispatcher dispatcher = null;
 	    HttpSession session;
 		Client client = new Client(user,pass,m,cc,mm);
 		/* TODO: NÃO DEIXAR QUE O CLIENTE SE REGISTE SEM EMAIL*/
@@ -73,8 +73,8 @@ public class Login extends HttpServlet{
 			dispatcher = request.getRequestDispatcher("/home.html");
 		}else if(!loggedIn && email==null){
 			dispatcher = request.getRequestDispatcher("/invalidlogin.html");
-		}else{
-			dispatcher = request.getRequestDispatcher("/register.html");
+		}else if(login.equals("Username already in use!")){
+			dispatcher = request.getRequestDispatcher("/invalidregister.html");
 		}
 		
 		dispatcher.forward(request, response);
