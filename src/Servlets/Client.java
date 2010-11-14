@@ -43,23 +43,20 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		m.subscribe(user, c);
 	}
 
-	@Override
 	public void receiveMessage(String s) throws RemoteException {
 		// TODO Auto-generated method stub
 		System.out.println(s);
 	}
 
-	@Override
 	public String getUser() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return user;
 	}
 
-	@Override
 	public int ping() throws RemoteException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	//Options
 	
 	public String[] getOnlineUsers(){
 		//LinkedList<String> result = new LinkedList<String>();
@@ -75,5 +72,16 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 			System.out.println("Could not connect to server!\nPlease wait.");
 			return null;
 		}
+	}
+	
+	public String bet(String user, int code, String result, int credits){
+		String output;
+		
+		try {
+			output = cc.bet(user, code, result, credits);
+		} catch (RemoteException e) {
+			output="Could not connect to server! Please wait.";
+		}
+		return output;
 	}
 }
