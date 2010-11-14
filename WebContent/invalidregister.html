@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Welcome to BetAndUin</title>
+<link rel="stylesheet" type="text/css" href="login.css" />
+</head>
+<body>
+<h1>Welcome to BetAndUin!</h1><br />
+<div align="center">
+<form class="registerForm" action="Servlets.Login" method="post">
+<table>
+	<tr >
+    	<td width="100">Username</td>
+        <td><input type="text" name="username" /></td>
+    </tr>
+    <tr>
+    	<td>Password</td>
+        <td><input type="password" name="passcode"/></td>
+    </tr>
+    <tr>
+    	<td>Confirm Password</td>
+    	<td><input type="password" name="confirmation"/></td>
+    </tr>
+    <tr>
+    	<td>Email</td>
+        <td><input type="text" name="email" /></td>
+    </tr>
+</table>
+<br />
+<input type="submit" value="Register" />
+</form>
+</div>
+<p>Username already in use, please choose another one</p>
+</body>
+</html>
