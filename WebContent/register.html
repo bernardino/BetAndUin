@@ -9,7 +9,7 @@
 		var firstPass=document.registerForm.passcode1.value;
 		var secondPass=document.registerForm.passcode2.value;
 		
-		if(firstPass==secondPass){
+		if(firstPass==secondPass && firstPass!=""){
 			document.getElementById("error").style.visibility='hidden';
 			if(document.registerForm.email.value!=""){
 				document.registerForm.submit_btn.disabled=false;
@@ -39,7 +39,7 @@
 	}
 </script>
 </head>
-<body onload="emailField();passMatch();">
+<body onload="emailField(); passMatch();">
 <h1>Welcome to BetAndUin!</h1><br />
 <div align="center">
 <form name="registerForm" class="registerForm" action="Servlets.Login" method="post">
