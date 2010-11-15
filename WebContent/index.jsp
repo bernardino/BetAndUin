@@ -1,6 +1,6 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
-<jsp:include page="jsp/auth_verification.jsp"></jsp:include>
+<jsp:include page="jsp/auth_index.jsp"></jsp:include>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
