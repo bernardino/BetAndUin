@@ -9,10 +9,10 @@
 
 Client user = (Client) session.getAttribute("user");
 
-if (user==null) //change this
+if (user!=null) //change this
 {
 %>
-    <jsp:forward page="/invaliduser.html"></jsp:forward>
+    <jsp:forward page="/home.html"></jsp:forward>
 <%
-} 
+}
 %>

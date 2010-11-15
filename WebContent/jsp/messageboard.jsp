@@ -3,8 +3,6 @@
 <%@page import="java.util.List" %>
 <%@page import="java.util.Iterator" %>
 
-<jsp:include page="auth_verification.jsp"></jsp:include>
-
 <html>
 <META HTTP-EQUIV=Refresh CONTENT="1; URL=http://localhost:8080/BetAndUin/jsp/messageboard.jsp">
 <head>

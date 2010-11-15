@@ -68,7 +68,6 @@ public class Login extends HttpServlet{
 				loggedIn = true;
 			}
 		}
-		System.out.println(login);
 		if(loggedIn){
 			dispatcher = request.getRequestDispatcher("/home.html");
 		}else if(!loggedIn && email==null){
