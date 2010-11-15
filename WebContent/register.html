@@ -50,11 +50,11 @@
     </tr>
     <tr>
     	<td>Password</td>
-        <td onkeyup="passMatch()" id="firstPass"><input type="text" name="passcode1"/></td>
+        <td onkeyup="passMatch()" id="firstPass"><input type="password" name="passcode1"/></td>
     </tr>
     <tr>
     	<td>Confirm Password</td>
-        <td id="secondPass" onkeyup="passMatch()"><input type="text" name="passcode2"/></td>
+        <td id="secondPass" onkeyup="passMatch()"><input type="password" name="passcode2"/></td>
     </tr>
     <tr>
     	<td>Email</td>
@@ -62,6 +62,7 @@
     </tr>
 </table>
 <br />
+
 <input type="submit" value="Register" name="submit_btn"/>
 <p id="error" style="visibility:hidden"><b>ERROR: The passwords do not match!</b></p>
 <p id="error2" style="visibility:hidden"><b>ERROR: The Email field is empty!</b></p>

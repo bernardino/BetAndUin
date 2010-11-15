@@ -1,4 +1,6 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@page import="Servlets.Client;"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,7 +27,7 @@
 			document.getElementById(idName.charAt(3)+" "+i).style.backgroundColor='#666';
 			document.getElementById(idName.charAt(3)+" "+i).style.color='#FC3';
 		}
-		document.getElementById(idName).style.visibility='collapse';	
+		document.getElementById(idName).style.visibility='none';	
 	}
 </script>
 </head>
@@ -43,8 +45,23 @@
     </table>
     <br />
     <table id="games" cellpadding="10" cellspacing="5">
+    <% /*Client user = (Client)session.getAttribute("user");
+    	String[] games = user.getGames();
+    	String[] game;
+    	int numGames = games.length;
+    	for(int i=1; i<= numGames; i++){
+    		game = games[i].split(" vs ");
+    		out.println("<tr class=\"gamesO\">");
+    		out.println("<td onClick=\"changeBG(this.id)\" width=\"160\" align=\"center\" id=\""+i+" 1\">"+ game[0] +"</td>");
+    		out.println("<td onClick=\"changeBG(this.id)\" width=\"80\" align=\"center\" id=\""+i+" 2\">Tie</td>");
+    		out.println("<td onClick=\"changeBG(this.id)\" width=\"160\" align=\"center\" id=\""+i+" 3\">"+ game[1] +"</td></tr>");
+    		out.println("<tr class=\"appear\" id=\"row"+i+"-\"style=\"visibility:collapse\">");
+    		out.println("<td colspan=\"2\" align=\"center\">Credits: <input type=\"text\" size=\"10\" /><input type=\"button\" value=\"BET\"/></td>");
+    		out.println("<td onClick=\"hideThis(this.parentNode.id)\">hide</td></tr>");
+    	}*/
+    %>
     	<tr class="gamesOp">
-        	<td  onclick="changeBG(this.id)" width="160" align="center" id="1 1">as</td>
+        	<td onClick="changeBG(this.id)" width="160" align="center" id="1 1">as</td>
             <td onClick="changeBG(this.id)" width="80" align="center" id="1 2">Tie</td>
             <td onClick="changeBG(this.id)" width="160" align="center" id="1 3">cs</td>
         </tr>

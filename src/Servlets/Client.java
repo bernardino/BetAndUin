@@ -10,6 +10,7 @@ import Server.MenuInterface;
 
 import ClientRMI.ClientInterface;
 
+
 @SuppressWarnings("serial")
 public class Client extends UnicastRemoteObject implements ClientInterface{
 	String user,password;
@@ -83,5 +84,16 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 			output="Could not connect to server! Please wait.";
 		}
 		return output;
+	}
+	
+	public String[] getGames(){
+		String[] result;
+		try {
+			result = cc.currentMatches().split("\n");
+		} catch (RemoteException e) {
+			result=new String[1];
+			result[0] = "Could not connect to server! Please wait.";
+		}
+		return result;
 	}
 }
