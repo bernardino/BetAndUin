@@ -11,7 +11,7 @@
 
 <script language="javascript">
 	function toMessage(user){
-		parent.messages.messageinfo.sendMessage.chosen=user;
+		//parent.messages.messageinfo.sendMessage.chosen=user;
 	}
 	
 </script>

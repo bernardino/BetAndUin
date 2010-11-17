@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>BetAndUin - Home</title>
-	<frameset rows="10%,5%,*" border="5">
+	<frameset rows="10%,*" border="5">
 		<frame src="menu.html" name="menu" />
 		<frame src="news_preview.html" name="news_preview" />
 		<frameset cols="40%,40%,20%" border="0">
