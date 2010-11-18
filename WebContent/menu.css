@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-color:#eee
+}
+
+h1 {
+	color:#abc;
+	font-size:20px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}

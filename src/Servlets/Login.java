@@ -69,14 +69,14 @@ public class Login extends HttpServlet{
 			}
 		}
 		if(loggedIn){
-			dispatcher = request.getRequestDispatcher("/home.jsp");
+			response.sendRedirect("/BetAndUin/home.jsp");
 		}else if(!loggedIn && email==null){
-			dispatcher = request.getRequestDispatcher("/invalidlogin.html");
+			response.sendRedirect("/BetAndUin/invalidlogin.html");
 		}else if(login.equals("Username already in use!")){
-			dispatcher = request.getRequestDispatcher("/invalidregister.html");
+			response.sendRedirect("/BetAndUin/invalidregister.html");
 		}
 		
-		dispatcher.forward(request, response);
+		//dispatcher.forward(request, response);
 		
 	}
 
