@@ -11,10 +11,11 @@
             <h1>Chat</h1>
             <div id="messagesboard" style="overflow: auto; border:thin solid #000000; position: fixed; top: 80px; left: 30px; width: 400px; height: 400px"></div>
         </div>
-        <div id="input" style="position: fixed; top: 490px; left: 30px; width: 600px; height: 60px">
+        <div id="input" style="position: fixed; top: 490px; left: 30px; width: 400px; height: 60px">
             <input id="message" type="text" size="90"/><br/>
-            Send To: <input id="destination" type="text" size="20"/><br/>
-            <select name="chosen">
+            Send To:
+            <select id="destination">
+            <option>allusers</option>
 		<%
 		String[] result = ((Servlets.Client)session.getAttribute("user")).getOnlineUsers();
 		for(int i=0;i<result.length;i++){
@@ -31,7 +32,7 @@
     	
     	// Initiate Comet object
     	var comet = Comet("http://localhost:8080/BetAndUin/");
-    	var board = document.getElementById('messagesboard');
+    	var board = document.getElementById('messagesboard').value;
     	
     	// Register with Server for COMET callbacks.
     	comet.get("ChatServlet?type=register", function(response) {

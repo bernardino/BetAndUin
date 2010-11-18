@@ -69,7 +69,7 @@ public class Login extends HttpServlet{
 			}
 		}
 		if(loggedIn){
-			dispatcher = request.getRequestDispatcher("/home.html");
+			dispatcher = request.getRequestDispatcher("/home.jsp");
 		}else if(!loggedIn && email==null){
 			dispatcher = request.getRequestDispatcher("/invalidlogin.html");
 		}else if(login.equals("Username already in use!")){
