@@ -13,22 +13,22 @@
         </div>
         <div id="input" style="position: fixed; top: 490px; left: 30px; width: 400px; height: 60px">
             <input id="message" type="text" size="90"/><br/>
-            Send To:
-            <select id="destination">
-            <option>allusers</option>
-		<%
-		String[] result = ((Servlets.Client)session.getAttribute("user")).getOnlineUsers();
-		for(int i=0;i<result.length;i++){
-			out.println("<option name=\""+result[i]+"\">"+ result[i] +"</option>");
-		}
-		%>
-		</select>
-            <input type="button" onclick="sendMsg()" value="Send" />
-            <input type="button" onclick="quitChat();window.location='about:blank';" value="Quit" />
+            Send To:<br><input type="radio" onClick="radioHandler(all)" value"allusers">All Users<br><input type="radio" onClick="radioHandler(user)" >Specific User: <input type="text" id="chosenUser" width="120" name="chosenUser">
+            <br><br>
+            <input type="button" onClick="sendMsg()" value="Send" />
+            <input type="button" onClick="quitChat();window.location='about:blank';" value="Quit" />
         </div>
     </body>
     <script type="text/javascript" src="comet.js"> </script>
     <script type="text/javascript">
+		
+		function radioHandler(option){
+			if(option=="all"){
+				document.chosenUser.disabled=true;
+			} else if(option=="user"){
+				document.chosenUser.disabled=false;
+			}
+		}
     	
     	// Initiate Comet object
     	var comet = Comet("http://localhost:8080/BetAndUin/");
