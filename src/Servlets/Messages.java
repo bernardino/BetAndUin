@@ -22,14 +22,14 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 	// Method called when a client is registers with the CometProcessor
 	private void addClient(String nickName, HttpServletResponse clientResponseObject) {
 		Messages.clients.put(nickName, clientResponseObject);
-		sendMessageToAll("<i>"+nickName+" has just entered the chat room!</i>");
+		//sendMessageToAll("<i>"+nickName+" has just entered the chat room!</i>");
 	}
 
 	
 	// Method called after an Exception is thrown when the server tries to write to a client's socket.
-	private void removeClient(String nickName, HttpServletRequest request) {
+	private static void removeClient(String nickName, HttpServletRequest request) {
 		if (Messages.clients.remove(nickName) != null) {
-			sendMessageToAll("<i>"+nickName+" has just left the chat room!</i>");
+			//sendMessageToAll("<i>"+nickName+" has just left the chat room!</i>");
 		}
 	}
 
@@ -52,7 +52,7 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 
 		// Initialize the SESSION and Cache headers.
 		String sessionId = request.getSession().getId();
-		String nickName = (String) request.getSession().getAttribute("nickName");
+		String nickName = ((Servlets.Client) request.getSession().getAttribute("nickName")).getUsername();
 		System.out.println("Nick: " + nickName); 
 		System.out.println("SESSION: " + sessionId);
 		response.setHeader("Pragma", "no-cache");
@@ -120,7 +120,7 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 	
 	
 	
-	private void sendMessageToAll(String message) {
+	private static void sendMessageToAll(String message) {
 		// The message is for everyone.
 		synchronized (Messages.clients) {
 			Set<String> clientKeySet = Messages.clients.keySet();
@@ -139,13 +139,17 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 		}
 	}
 
-	private void sendMessage(String message, String destination) {
+	public static void sendMessage(String message, String destination) {
 		// This method sends a message to a specific user
 		System.out.println("D:" + destination);
+		System.out.println(message);
 		
 		synchronized (Messages.clients) {
 			try {
 				HttpServletResponse resp = Messages.clients.get(destination);
+				if(resp==null){
+					System.out.println("user not found");
+				}
 				resp.getWriter().println(message + "<br/>");
 				resp.getWriter().flush();
 			} catch (IOException ex) {

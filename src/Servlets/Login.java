@@ -47,6 +47,7 @@ public class Login extends HttpServlet{
 		RequestDispatcher dispatcher = null;
 	    HttpSession session;
 		Client client = new Client(user,pass,m,cc,mm);
+		
 		/* TODO: NÃO DEIXAR QUE O CLIENTE SE REGISTE SEM EMAIL*/
 		if(email==null){
 			/* Attempt to login */

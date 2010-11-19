@@ -59,7 +59,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 
 	public void receiveMessage(String s) throws RemoteException {
 		// TODO Auto-generated method stub
-		System.out.println(s);
+		Messages.sendMessage(s, user);
 	}
 
 	public String getUser() throws RemoteException {
