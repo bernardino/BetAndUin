@@ -30,6 +30,19 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		return user;
 	}
 	
+	public String getCredits() throws RemoteException{
+		return cc.showCredits(user);
+	}
+	
+	public String toString(){
+		try {
+			return "Hello, "+user+ " (" + getCredits() + " credits)";
+		} catch (RemoteException e) {
+			
+		}
+		return "";
+	}
+	
 	public String login(String user, String pass) throws RemoteException{
 		return m.login(user, pass);
 		
