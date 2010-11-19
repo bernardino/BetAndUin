@@ -27,13 +27,14 @@
 			document.getElementById(idName.charAt(3)+" "+i).style.backgroundColor='#666';
 			document.getElementById(idName.charAt(3)+" "+i).style.color='#FC3';
 		}
-		document.getElementById(idName).style.visibility='collapse';	
+		document.getElementById(idName).style.visibility='collapse';
 	}
 </script>
 </head>
 
 <body>
 <h2 style="font-family:Tahoma, Geneva, sans-serif">Bets</h2>
+
 <div id="bets" align="center" style="background-color:#000; color:#FFF;">
 <br />
 <br />

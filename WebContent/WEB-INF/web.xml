@@ -15,8 +15,17 @@
     <servlet-name>Login</servlet-name>
     <servlet-class>Servlets.Login</servlet-class>
   </servlet>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>Login</servlet-name>
-    <url-pattern>/Servlets.Login</url-pattern>
+    <url-pattern>Servlets.Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<display-name>Messages</display-name>
+    <servlet-name>Messages</servlet-name>
+    <servlet-class>Servlets.Messages</servlet-class>
+  </servlet>
+  <servlet-mapping>
+ 	<servlet-name>Messages</servlet-name>
+    <url-pattern>/Messages</url-pattern>
   </servlet-mapping>
 </web-app>
