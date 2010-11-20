@@ -113,4 +113,12 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		}
 		return result;
 	}
+	
+	public void sendMessage(String destination, String message) throws RemoteException{
+		mm.sendMessage(user, destination, message);
+	}
+	
+	public void sendMessageAll(String message) throws RemoteException{
+		mm.sendMessageAll(user, message);
+	}
 }

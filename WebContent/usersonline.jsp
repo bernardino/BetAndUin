@@ -10,8 +10,9 @@
 <title>Untitled Document</title>
 
 <script language="javascript">
-	function toMessage(user){
-		
+	function toMessage(id){
+		var user = document.getElementById(id).innerHTML;
+		parent.messages.getElementById("destination").value=user;
 	}
 	
 </script>
@@ -22,12 +23,12 @@
 <h1 align="center" >online users</h1>
 
 	<table>
-    <tr><td align="center" width="100" onClick="toMessage(this.value)">AHAHAHa</td></tr>
+    <tr><td align="center" width="100" onClick="toMessage(this.innerHTML)">AHAHAHa</td></tr>
     	<%
 String[] result = ((Servlets.Client)session.getAttribute("user")).getOnlineUsers();
 if(result!=null){
 	for(int i=0;i<result.length;i++){
-		out.println("<tr><td align=\"center\" width=\"100\" onClick=\"toMessage(this.innerHTML)\">"+result[i]+"</td></tr>");
+		out.println("<tr><td id=\""+i+"\" align=\"center\" width=\"100\" onClick=\"toMessage(this.id)\">"+result[i]+"</td></tr>");
 	}
 } else {
 	out.println("An Error Occurred!");

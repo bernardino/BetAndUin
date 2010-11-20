@@ -14,7 +14,7 @@
         <div id="input" style="position: fixed; top: 490px; left: 30px; width: 400px; height: 60px">
             <input id="message" type="text" size="90"/><br/>
             Send To:<br><input type="radio" name="group" onClick="radioHandler('all')" value="allusers">All Users<br>
-            <input type="radio" name="group" onClick="radioHandler('user')" >Specific User: <input type="text" id="chosenUser" width="120" name="chosenUser">
+            <input type="radio" name="group" onClick="radioHandler('user')" >Specific User: <input type="text" id="destination" width="120" name="chosenUser">
             <br><br>
             <input type="button" onClick="sendMsg()" value="Send" />
             <input type="button" onClick="quitChat();window.location='about:blank';" value="Quit" />
@@ -29,6 +29,7 @@
     	// Register with Server for COMET callbacks.
     	comet.get("Messages?type=register", function(response) {
     		// updates the message board with the new response.
+    		alert("entrou");
     		board.innerHTML = response;
     	});
     
@@ -59,9 +60,10 @@
     	
     	function radioHandler(option){
 			if(option=="all"){
-				document.getElementById("chosenUser").disabled=true;
+				document.getElementById("destination").disabled=true;
+				document.getElementById("destination").value="";
 			} else if(option=="user"){
-				document.getElementById("chosenUser").disabled=false;
+				document.getElementById("destination").disabled=false;
 			}
 		}
     	
