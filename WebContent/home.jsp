@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>BetAndUin - Home</title>
-	<frameset rows="10%,5%,*" border="0">
-		<frame src="menu.jsp" name="menu" />
+	<frameset rows="10%,5%,*" border="0" >
+		<frame src="menu.jsp" name="menu" noresize scrolling=no />
 		<frame src="news_preview.html" name="news_preview" />
 		<frameset cols="40%,40%,20%" border="0">
 			<frame src="bets.jsp" name="bets" />

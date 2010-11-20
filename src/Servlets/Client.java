@@ -34,6 +34,10 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		return cc.showCredits(user);
 	}
 	
+	public void resetCredits() throws RemoteException{
+		cc.resetCredits(user);
+	}
+	
 	public String toString(){
 		try {
 			return "Hello, "+user+ " (" + getCredits() + " credits)";
