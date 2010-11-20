@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.comet.CometEvent;
 import org.apache.catalina.comet.CometProcessor;
@@ -101,9 +103,17 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 			
 			if (msg != null && !msg.isEmpty()) {
 				if (dest.equals("allusers")) {
-					sendMessageToAll(msg);
+					try{
+						((Servlets.Client) request.getSession().getAttribute("user")).sendMessageAll(msg);
+					} catch (RemoteException e) {
+						
+					}
 				} else {
-					sendMessage(msg,dest);
+					try{
+						((Servlets.Client) request.getSession().getAttribute("user")).sendMessage(dest, msg);
+					} catch (RemoteException e) {
+						
+					}
 				}
 			}
 			
@@ -120,7 +130,7 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 	
 	
 	
-	private static void sendMessageToAll(String message) {
+	/*private static void sendMessageToAll(String message) {
 		// The message is for everyone.
 		synchronized (Messages.clients) {
 			Set<String> clientKeySet = Messages.clients.keySet();
@@ -137,7 +147,7 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 				}
 			}
 		}
-	}
+	}*/
 
 	public static void sendMessage(String message, String destination) {
 		// This method sends a message to a specific user
@@ -147,11 +157,13 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 		synchronized (Messages.clients) {
 			try {
 				HttpServletResponse resp = Messages.clients.get(destination);
-				if(resp==null){
-					System.out.println("user not found");
+				if(resp!=null){
+					resp.getWriter().println(message + "<br/>");
+					resp.getWriter().flush();
+				} else {
+					
 				}
-				resp.getWriter().println(message + "<br/>");
-				resp.getWriter().flush();
+				
 			} catch (IOException ex) {
 				// Trouble using the response object's writer so we remove
 				// the user and response object from the hashtable
