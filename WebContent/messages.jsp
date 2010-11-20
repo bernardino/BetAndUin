@@ -29,13 +29,12 @@
     	// Register with Server for COMET callbacks.
     	comet.get("Messages?type=register", function(response) {
     		// updates the message board with the new response.
-    		alert("entrou");
     		board.innerHTML = response;
     	});
     
     	function sendMsg() {
     		var msg = document.getElementById('message').value;
-    		var dest = document.getElementById('destination');
+    		var dest = document.getElementById('destination').value;
     		if (dest == "") {
     			msg = "allusers\n" + msg;
     		}

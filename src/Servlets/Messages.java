@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.comet.CometEvent;
 import org.apache.catalina.comet.CometProcessor;
@@ -19,11 +17,9 @@ public class Messages extends HttpServlet implements CometProcessor {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Map<String, HttpServletResponse> clients;
+	private static Map<String, HttpServletResponse> clients= new Hashtable<String, HttpServletResponse>();
 	
-	public void init(){
-		clients = new Hashtable<String, HttpServletResponse>();
-	}
+	
 	
 	// Method called when a client is registers with the CometProcessor
 	private void addClient(String nickName, HttpServletResponse clientResponseObject) {
@@ -55,11 +51,17 @@ public class Messages extends HttpServlet implements CometProcessor {
 		
 		// Parse the something from "?type=something" in the URL.
 		String reqType = request.getParameter("type");
-
+		String nickName;
 		// Initialize the SESSION and Cache headers.
 		String sessionId = request.getSession().getId();
-		String nickName = ((Client) request.getSession().getAttribute("user")).getUsername();
-		System.out.println("Nick: " + nickName); 
+		try{
+			nickName = ((Client) request.getSession().getAttribute("user")).getUsername();
+			System.out.println("Nick: " + nickName); 
+		} catch(NullPointerException e){
+			System.out.println("ups messages");
+			nickName = "";
+			return;
+		}
 		System.out.println("SESSION: " + sessionId);
 		response.setHeader("Pragma", "no-cache");
 		response.setHeader("Cache-control", "no-cache");

@@ -2,7 +2,6 @@ package Servlets;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.LinkedList;
 
 import Server.CMInterface;
 import Server.MMInterface;

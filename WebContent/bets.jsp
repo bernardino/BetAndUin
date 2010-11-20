@@ -46,8 +46,15 @@
     </table>
     <br />
     <table id="games" cellpadding="10" cellspacing="5">
-    <% Client user = (Client)session.getAttribute("user");
-    	String[] games = user.getGames();
+    <% 
+    String[] games = new String[0];
+    try{
+    	Client user = (Client)session.getAttribute("user");
+    	games = user.getGames();
+    } catch(NullPointerException e){
+    	System.out.println("ups bets");
+    }
+    	
     	String[] game;
     	String numGame;
     	int numGames = games.length;
