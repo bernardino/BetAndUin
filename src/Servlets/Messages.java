@@ -19,7 +19,11 @@ public class Messages extends HttpServlet implements CometProcessor {
 
 	private static final long serialVersionUID = 1L;
 
-private static Map<String, HttpServletResponse> clients = new Hashtable<String, HttpServletResponse>();
+	private static Map<String, HttpServletResponse> clients;
+	
+	public void init(){
+		clients = new Hashtable<String, HttpServletResponse>();
+	}
 	
 	// Method called when a client is registers with the CometProcessor
 	private void addClient(String nickName, HttpServletResponse clientResponseObject) {
@@ -104,13 +108,13 @@ private static Map<String, HttpServletResponse> clients = new Hashtable<String, 
 			if (msg != null && !msg.isEmpty()) {
 				if (dest.equals("allusers")) {
 					try{
-						((Servlets.Client) request.getSession().getAttribute("user")).sendMessageAll(msg);
+						((Client) request.getSession().getAttribute("user")).sendMessageAll(msg);
 					} catch (RemoteException e) {
 						
 					}
 				} else {
 					try{
-						((Servlets.Client) request.getSession().getAttribute("user")).sendMessage(dest, msg);
+						((Client) request.getSession().getAttribute("user")).sendMessage(dest, msg);
 					} catch (RemoteException e) {
 						
 					}

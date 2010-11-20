@@ -20,6 +20,7 @@
     <url-pattern>/Servlets.Login</url-pattern>
   </servlet-mapping>
   <servlet>
+  	<description></description>
   	<display-name>Messages</display-name>
     <servlet-name>Messages</servlet-name>
     <servlet-class>Servlets.Messages</servlet-class>

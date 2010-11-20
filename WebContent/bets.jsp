@@ -63,7 +63,7 @@
     		out.println("<td onClick=\"changeBG(this.id)\" width=\"160\" align=\"center\" id=\""+i+" 3\">"+ game[1] +"</td></tr>");
     		out.println("<tr class=\"appear\" id=\"row"+i+"-\"style=\"visibility:collapse\">");
     		out.println("<td colspan=\"3\" align=\"center\">Credits: <input type=\"text\" size=\"10\" /><input type=\"button\" value=\"BET\"/></td>");
-    		out.println("<td onClick=\"hideThis(this.parentNode.id)\">hide</td></tr>");
+    		out.println("<td style=\"cursor:pointer;\" onClick=\"hideThis(this.parentNode.id)\">hide</td></tr>");
     	}
     %><!--
     	<tr class="gamesOp">
@@ -108,5 +108,6 @@
     <br />
     <br />
 </div>
+<input type="button" value="REFRESH" onClick="location.reload(true);">
 </body>
 </html>
