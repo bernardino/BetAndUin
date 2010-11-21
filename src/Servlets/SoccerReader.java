@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Hashtable;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -30,17 +31,18 @@ public class SoccerReader {
 		// First we print the main headlines
 		System.out.println("Headlines:");
         System.out.println("==========");
-		String lastID = reader.latestHeadlines("Portugal", "sport");
-		System.out.println(lastID);
+		//String lastID = reader.latestHeadlines("Portugal", "sport");
+		//System.out.println(lastID);
 		// Then we print the main body of the first.
 		System.out.println("\nMore Info:");
 		System.out.println("==========");
-		reader.recentBody(lastID);
+		//reader.recentBody(lastID);
 	}
 	
-	private String latestHeadlines(String query, String section) {
+	public Hashtable<String,String> latestHeadlines(String query, String section) {
 		// Used to store the last ID.
 		String lastID = null;
+		Hashtable<String,String> headlines = new Hashtable<String,String>();
 		
 		try {  
 			// Initiate the REST client.
@@ -88,6 +90,7 @@ public class SoccerReader {
 	        	String title = node.getAttributes().getNamedItem("web-title").getTextContent();
 	 			lastID = node.getAttributes().getNamedItem("id").getTextContent();
 	        	System.out.println(title);
+	        	headlines.put(lastID,title);
 	        }
 	        
 		} catch(IOException e) { 
@@ -95,11 +98,13 @@ public class SoccerReader {
 	    } catch (XPathExpressionException e) {
 			e.printStackTrace();
 		}
-		return lastID;
+		return headlines;
 	}	
 	
 	
-	private void recentBody(String lastID) {
+	public String [] recentBody(String lastID) {
+		
+		String [] info = new String[3];
 		// This function should print the body of the last news item.
 		try {  
 			
@@ -143,25 +148,30 @@ public class SoccerReader {
 	        // XPath is a way of reading XML files.
 	        XPathFactory  factory=XPathFactory.newInstance();
 	        XPath xPath=factory.newXPath();
-
+	        
 			// TODO 2: Extract all <field> elements using XPath.
 			//NodeList nodes = (NodeList) xPath.evaluate("/YOUR/TAG/PATH", inputSource, XPathConstants.NODESET);
-	        NodeList nodes = (NodeList) xPath.evaluate("/response/content/fields/field", inputSource, XPathConstants.NODESET);		
-			 for (int i=0;i<nodes.getLength();i++) {
-	        	Node node = nodes.item(i);
-	        	if(node.getAttributes().getNamedItem("name").getNodeValue().equals("trail-text")){
-	        		System.out.println(node.getTextContent());
-	        	}
+	        NodeList nodes = (NodeList) xPath.evaluate("/response/content/fields/field", inputSource, XPathConstants.NODESET);
+			for (int i=0;i<nodes.getLength();i++) {
+				Node node = nodes.item(i);
+				if(node.getAttributes().getNamedItem("name").getNodeValue().equals("headline")){
+					info[0] = node.getTextContent();
+				}
+				if(node.getAttributes().getNamedItem("name").getNodeValue().equals("trail-text")){
+					info[1]= node.getTextContent();
+				}
+				if(node.getAttributes().getNamedItem("name").getNodeValue().equals("thumbnail")){
+					info[2] = node.getTextContent();
+				}
 				
-				// TODO 3
-				// Check if name="trail-text"
-				// And if is, print the content of the node element.
-	        }
-	
+			}
+			
+			return info;
+			
 		} catch(IOException e) { 
-	    	e.printStackTrace();
+	    	return null;
 	    } catch (XPathExpressionException e) {
-			e.printStackTrace();
+	    	return null;
 		}
 	}
 	
