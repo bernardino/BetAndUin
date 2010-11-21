@@ -12,7 +12,7 @@
 <script language="javascript">
 	function toMessage(id){
 		var user = document.getElementById(id).innerHTML;
-		parent.messages.getElementById("destination").value=user;
+		parent.messages.document.getElementById("destination").value=user;
 	}
 	
 </script>
@@ -23,12 +23,18 @@
 <h1 align="center" >online users</h1>
 
 	<table>
-    <tr><td align="center" width="100" onClick="toMessage(this.innerHTML)">AHAHAHa</td></tr>
-    	<%
-String[] result = ((Servlets.Client)session.getAttribute("user")).getOnlineUsers();
+    	<% 
+    	String[] result = null;
+    	try{
+    		((Servlets.Client)session.getAttribute("user")).getUsername();
+    		result = ((Servlets.Client)session.getAttribute("user")).getOnlineUsers();
+    	} catch(NullPointerException e){
+    		System.out.println("ups");
+    	}
+
 if(result!=null){
 	for(int i=0;i<result.length;i++){
-		out.println("<tr><td id=\""+i+"\" align=\"center\" width=\"100\" onClick=\"toMessage(this.id)\">"+result[i]+"</td></tr>");
+		out.println("<tr><td id=\""+i+"\" style=\"cursor:pointer;\" align=\"center\" width=\"100\" onClick=\"toMessage(this.id)\">"+result[i]+"</td></tr>");
 	}
 } else {
 	out.println("An Error Occurred!");

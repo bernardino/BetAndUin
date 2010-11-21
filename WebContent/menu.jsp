@@ -15,8 +15,8 @@
 	<body>
 		<div>
 			<span class="client"><%=((Client)session.getAttribute("user")).toString()%></span>
-			<span class="client" onclick="<%((Client)session.getAttribute("user")).resetCredits();%>" onmouseup="location.reload();">reset</span>
-			<span class="right" onclick="<% session.invalidate();%>" onmouseup="parent.window.location.reload();">Logout</span>
+			<span class="client" onClick="" onMouseUp="location.reload();">reset</span>
+			<span class="right" onClick="" onMouseUp="parent.window.location.reload();">Logout</span>
 			<!-- <span class="right" onclick="redirect('index.jsp');">Logout</span> -->
 		</div>
 		<div style="text-align:center">
