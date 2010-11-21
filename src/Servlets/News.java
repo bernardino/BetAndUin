@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class News extends HttpServlet {
 	SoccerReader reader;
 	public void init(){
-		reader = new SoccerReader();
+		//reader = new SoccerReader();
 		
 	}
 	
