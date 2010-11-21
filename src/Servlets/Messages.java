@@ -122,7 +122,7 @@ public class Messages extends HttpServlet implements CometProcessor {
 					}
 				}
 			}
-			
+			event.close();
 		} else if (event.getEventType() == CometEvent.EventType.ERROR) {
 			// In case of any error, we terminate the connection.
 			// The connection remains in cache anyway, and it's later removed
