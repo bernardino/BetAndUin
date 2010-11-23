@@ -13,8 +13,8 @@
 		<div id="messagesboard" style="overflow: auto; border:thin solid #000000; position: fixed; top: 80px; left: 30px; width: 400px; height: 400px"></div>
         <div id="input" style="position: fixed; top: 490px; left: 30px; width: 400px; height: 60px">
             <input id="message" type="text" size="90"/><br/>
-            Send To:<br><input type="radio" name="group" onClick="radioHandler('all')" value="allusers">All Users<br>
-            <input type="radio" name="group" onClick="radioHandler('user')" >Specific User: <input type="text" id="destination" width="120" name="chosenUser">
+            Send To:<br><input type="radio" id="allusers" name="group" onClick="radioHandler('all')" value="allusers">All Users<br>
+            <input type="radio" id="specUser" name="group" onClick="radioHandler('user')" >Specific User: <input type="text" id="destination" width="120" name="chosenUser">
             <br><br>
             <input type="button" onClick="sendMsg()" value="Send" />
             <input type="button" onClick="quitChat();window.location='about:blank';" value="Quit" />
@@ -35,18 +35,23 @@
     	function sendMsg() {
     		var msg = document.getElementById('message').value;
     		var dest = document.getElementById('destination').value;
-    		if (dest == "") {
+    		var allusers = document.getElementById('allusers');
+    		var specUser = document.getElementById('specUser');
+    		
+    		if (allusers.checked) {
     			msg = "allusers\n" + msg;
     		}
-    		else {
+    		else if(specUser.checked) {
     			msg = dest + "\n" + msg
     		}
-    			
-    		comet.post("Messages", msg, function(response) {
-    			// Do Nothing
-    		})
-    		// Clears the value of the message element
-    		document.getElementById('message').value = '';
+    		
+    		if(allusers.checked || specUser.checked){
+    			comet.post("Messages", msg, function(response) {
+    				// Do Nothing
+    			})
+    			// Clears the value of the message element
+    			document.getElementById('message').value = '';
+    		}
     	}
   	
     	

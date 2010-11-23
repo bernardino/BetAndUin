@@ -16,7 +16,8 @@
 		<div>
 			<span class="client"><%=((Client)session.getAttribute("user")).toString()%></span>
 			<span class="reset" onClick="" onMouseUp="location.reload();">reset</span>
-			<span class="right" onClick="" onMouseUp="parent.window.location.reload();">Logout</span>
+			<form action="Servlets.Login?type=logout" id="logoutForm"><span class="right" onClick="document.getElementById('logoutForm').submit();">Logout</span></form>
+			<!--<span class="right" onClick="" onMouseUp="parent.window.location.reload();">Logout</span>
 			<!-- <span class="right" onclick="redirect('index.jsp');">Logout</span> -->
 		</div>
 		<div style="text-align:center">

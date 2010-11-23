@@ -47,6 +47,14 @@ public class Login extends HttpServlet{
 		RequestDispatcher dispatcher = null;
 	    HttpSession session;
 		Client client = new Client(user,pass,m,cc,mm);
+		String type=request.getParameter("type");
+		
+		if(type!=null){
+			m.unsubscribe(((Client)request.getSession().getAttribute("user")).getUsername());
+			request.getSession().invalidate();
+			response.sendRedirect("BetAndUin/index.jsp");
+			return;
+		}
 		
 		/* TODO: NÃO DEIXAR QUE O CLIENTE SE REGISTE SEM EMAIL*/
 		if(email==null){

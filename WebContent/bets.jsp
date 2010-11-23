@@ -62,17 +62,17 @@
     		game = games[i-1].split(" ");
     		numGame=game[1];
     		game = games[i-1].split(" vs ");
-    		game[0] = game[0].substring(2+numGame.length());
-    		out.println("<tr class=\"gamesOp\">");
-    		out.println("<td width=\"50\" align=\"center\" id=\""+i+" 0\">"+ numGame +"</td>");
-    		out.println("<td onClick=\"changeBG(this.id)\" width=\"160\" align=\"center\" id=\""+i+" 1\">"+ game[0] +"</td>");
-    		out.println("<td onClick=\"changeBG(this.id)\" width=\"80\" align=\"center\" id=\""+i+" 2\">Tie</td>");
-    		out.println("<td onClick=\"changeBG(this.id)\" width=\"160\" align=\"center\" id=\""+i+" 3\">"+ game[1] +"</td></tr>");
-    		out.println("<tr class=\"appear\" id=\"row"+i+"-\"style=\"visibility:collapse\">");
-    		out.println("<td colspan=\"3\" align=\"center\">Credits: <input type=\"text\" size=\"10\" /><input type=\"button\" value=\"BET\"/></td>");
-    		out.println("<td style=\"cursor:pointer;\" onClick=\"hideThis(this.parentNode.id)\">hide</td></tr>");
-    	}
-    %><!--
+    		game[0] = game[0].substring(2+numGame.length()); %>
+<tr class="gamesOp">
+<td width="50" align="center" id="<%=i%> 0"><%= numGame %></td>
+<td onClick="changeBG(this.id)" width="160" align="center" id="<%= i %> 1"><%= game[0] %></td>
+<td onClick="changeBG(this.id)" width="80" align="center" id="<%= i %> 2">Tie</td>
+<td onClick="changeBG(this.id)" width="160" align="center" id="<%= i %> 3"><%= game[1] %></td></tr>
+<tr class="appear" id="row<%= i %>-" style="visibility:collapse">
+<td colspan="3" align="center">Credits: <input type="text" size="10" /><input type="button" value="BET"/></td>
+<td style="cursor:pointer;" onClick="hideThis(this.parentNode.id)">hide</td></tr>
+<%}%>
+    	<!--
     	<tr class="gamesOp">
         	<td onClick="changeBG(this.id)" width="160" align="center" id="1 1">as</td>
             <td onClick="changeBG(this.id)" width="80" align="center" id="1 2">Tie</td>
