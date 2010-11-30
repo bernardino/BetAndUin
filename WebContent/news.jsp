@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<title>Untitled Document</title>
+	<title>BetAndUin News</title>
 		<frameset rows="10%,90%" border="0" >
 			<frame src="menu.jsp" name="menu" noresize scrolling=no />
 			<frame src="newsbody.jsp" name="news_body" />

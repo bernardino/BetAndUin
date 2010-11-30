@@ -1,6 +1,10 @@
 @charset "UTF-8";
 /* CSS Document */
 
+body{
+	background-color:#eee;
+}
+
 .gamesOp {
 	background-color:#666;
 	color:#FC3;

@@ -89,10 +89,8 @@ public class SoccerReader {
 	        	// Fetching the attributes of the node element
 	        	String title = node.getAttributes().getNamedItem("web-title").getTextContent();
 	 			lastID = node.getAttributes().getNamedItem("id").getTextContent();
-	        	System.out.println(title);
 	        	headlines.put(lastID,title);
 	        }
-	        
 		} catch(IOException e) { 
 	    	e.printStackTrace();
 	    } catch (XPathExpressionException e) {
@@ -104,7 +102,7 @@ public class SoccerReader {
 	
 	public String [] recentBody(String lastID) {
 		
-		String [] info = new String[3];
+		String [] info = new String[4];
 		// This function should print the body of the last news item.
 		try {  
 			
@@ -157,11 +155,14 @@ public class SoccerReader {
 				if(node.getAttributes().getNamedItem("name").getNodeValue().equals("headline")){
 					info[0] = node.getTextContent();
 				}
-				if(node.getAttributes().getNamedItem("name").getNodeValue().equals("trail-text")){
+				else if(node.getAttributes().getNamedItem("name").getNodeValue().equals("trail-text")){
 					info[1]= node.getTextContent();
 				}
-				if(node.getAttributes().getNamedItem("name").getNodeValue().equals("thumbnail")){
+				else if(node.getAttributes().getNamedItem("name").getNodeValue().equals("thumbnail")){
 					info[2] = node.getTextContent();
+				}
+				else if(node.getAttributes().getNamedItem("name").getNodeValue().equals("short-url")){
+					info[3]= node.getTextContent();
 				}
 				
 			}

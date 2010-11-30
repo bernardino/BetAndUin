@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-color:#eee;
+}
+
+
+.headline {
+	color:#1A1A1A;
+	font-size:25px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.content {
+	color:black;
+	font-size:15px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.top{
+	color:#1A1A1A;
+	font-size:25px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
