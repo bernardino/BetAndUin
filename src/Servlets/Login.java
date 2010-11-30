@@ -46,34 +46,36 @@ public class Login extends HttpServlet{
 		boolean loggedIn = false;
 		RequestDispatcher dispatcher = null;
 	    HttpSession session;
-		Client client = new Client(user,pass,m,cc,mm);
-		String type=request.getParameter("type");
-		
-		if(type!=null){
-			m.unsubscribe(((Client)request.getSession().getAttribute("user")).getUsername());
+	    String type=request.getParameter("type");
+		if(type!=null && type.equals("logout")){
+			((Client)request.getSession().getAttribute("user")).logout();
 			request.getSession().invalidate();
-			response.sendRedirect("BetAndUin/index.jsp");
+			response.sendRedirect("/BetAndUin/index.jsp");
 			return;
 		}
+		Client client = new Client(user,pass, m, cc, mm);
+		
 		
 		/* TODO: NÃO DEIXAR QUE O CLIENTE SE REGISTE SEM EMAIL*/
 		if(email==null){
 			/* Attempt to login */
-			login = client.login(user, pass);
+			login = m.login(user, pass);
 			
 			if(login.equals("User successfully authenticated.")){
+				m.subscribe(user, client);
 				session = request.getSession(true);
 				session.setAttribute("user",client);
-				client.subscribe(user, client);
+				
 				loggedIn = true;
 			}
 			
 		}else{
 			login = m.register(user, pass, email);
 			if(login.equals("Registration was successful")){
+				m.subscribe(user, client);
 				session = request.getSession(true);
 				session.setAttribute("user",client);
-				client.subscribe(user, client);
+				
 				loggedIn = true;
 			}
 		}

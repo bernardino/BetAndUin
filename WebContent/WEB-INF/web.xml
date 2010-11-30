@@ -15,18 +15,28 @@
     <servlet-name>Login</servlet-name>
     <servlet-class>Servlets.Login</servlet-class>
   </servlet>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>Login</servlet-name>
     <url-pattern>/Servlets.Login</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<description></description>
-  	<display-name>Messages</display-name>
+    <description></description>
+    <display-name>Bets</display-name>
+    <servlet-name>Bets</servlet-name>
+    <servlet-class>Servlets.Bets</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Bets</servlet-name>
+    <url-pattern>/Servlets.Bets</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Messages</display-name>
     <servlet-name>Messages</servlet-name>
     <servlet-class>Servlets.Messages</servlet-class>
   </servlet>
   <servlet-mapping>
- 	<servlet-name>Messages</servlet-name>
+    <servlet-name>Messages</servlet-name>
     <url-pattern>/Messages</url-pattern>
   </servlet-mapping>
 </web-app>

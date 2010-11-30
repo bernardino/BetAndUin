@@ -1,3 +1,4 @@
+<%@page import="Servlets.Client"%>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 
@@ -21,12 +22,12 @@
 
 <body>
 <h1 align="center" >online users</h1>
-
 	<table>
     	<% 
     	String[] result = null;
     	try{
-    		result = ((Servlets.Client)session.getAttribute("user")).getOnlineUsers();
+    		Client user = (Client)session.getAttribute("user");
+    		result = user.getOnlineUsers();
     	} catch(NullPointerException e){
     		System.out.println("ups");
     		result=null;
