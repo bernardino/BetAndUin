@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 <title>BetAndUin - Home</title>
 	<frameset rows="10%,5%,*" border="0" >
 		<frame src="menu.jsp" name="menu" noresize scrolling=no />

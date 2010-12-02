@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.comet.CometEvent;
 import org.apache.catalina.comet.CometProcessor;
 
+import sun.org.mozilla.javascript.internal.Context;
+
 public class Messages extends HttpServlet implements CometProcessor {
 
 	private static final long serialVersionUID = 1L;
@@ -24,14 +26,13 @@ public class Messages extends HttpServlet implements CometProcessor {
 	// Method called when a client is registers with the CometProcessor
 	private void addClient(String nickName, HttpServletResponse clientResponseObject) {
 		Messages.clients.put(nickName, clientResponseObject);
-		//sendMessageToAll("<i>"+nickName+" has just entered the chat room!</i>");
 	}
 
 	
 	// Method called after an Exception is thrown when the server tries to write to a client's socket.
-	private static void removeClient(String nickName, HttpServletRequest request) {
+	private static void removeClient(String nickName) {
 		if (Messages.clients.remove(nickName) != null) {
-			//sendMessageToAll("<i>"+nickName+" has just left the chat room!</i>");
+			
 		}
 	}
 
@@ -55,7 +56,7 @@ public class Messages extends HttpServlet implements CometProcessor {
 		// Initialize the SESSION and Cache headers.
 		String sessionId = request.getSession().getId();
 		try{
-			nickName = ((Client) request.getSession().getAttribute("user")).getUsername();
+			nickName = ((Client) request.getSession().getAttribute("user")).getUser();
 			System.out.println("Nick: " + nickName); 
 		} catch(NullPointerException e){
 			System.out.println("ups messages");
@@ -90,7 +91,7 @@ public class Messages extends HttpServlet implements CometProcessor {
 					
 				} else if (reqType.equalsIgnoreCase("exit")) {
 					// if the client wants to quit, we do it.					
-					removeClient(sessionId, request);
+					removeClient(nickName);
 				}
 			}
 		} else if (event.getEventType() == CometEvent.EventType.READ) {
@@ -133,27 +134,6 @@ public class Messages extends HttpServlet implements CometProcessor {
 			event.close();
 		}
 	}
-	
-	
-	
-	/*private static void sendMessageToAll(String message) {
-		// The message is for everyone.
-		synchronized (Messages.clients) {
-			Set<String> clientKeySet = Messages.clients.keySet();
-			// Let's iterate through the clients and send each one the message.
-			for (String client : clientKeySet) {
-				try {
-					HttpServletResponse resp = Messages.clients.get(client);
-					resp.getWriter().println(message + "<br/>");
-					resp.getWriter().flush();
-				} catch (IOException ex) {
-					// Trouble using the response object's writer so we remove
-					// the user and response object from the hashtable
-					removeClient(client,null);
-				}
-			}
-		}
-	}*/
 
 	public static void sendMessage(String message, String destination) {
 		// This method sends a message to a specific user
@@ -173,7 +153,7 @@ public class Messages extends HttpServlet implements CometProcessor {
 			} catch (IOException ex) {
 				// Trouble using the response object's writer so we remove
 				// the user and response object from the hashtable
-				removeClient(destination,null);
+				removeClient(destination);
 			}
 		}
 	}

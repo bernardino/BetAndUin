@@ -25,7 +25,7 @@
 <body>
 	<%	
 		SoccerReader reader = new SoccerReader(); 
-		Hashtable<String,String> headlines = reader.latestHeadlines("football", "sport");
+		Hashtable<String,String> headlines = reader.latestHeadlines("Benfica", "sport");
 		Enumeration<String> it = headlines.keys();
 		String aux = "";
 		int i = 0;

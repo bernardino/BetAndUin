@@ -12,56 +12,21 @@ import ClientRMI.ClientInterface;
 
 @SuppressWarnings("serial")
 public class Client extends UnicastRemoteObject implements ClientInterface{
-	String user,password;
-	MenuInterface m = null;
-	CMInterface cc = null;
-	MMInterface mm = null;
+	private String user,password;
+	private MenuInterface m = null;
+	private CMInterface cc = null;
+	private MMInterface mm = null;
 	
-	public Client(String user,String pass, MenuInterface m, CMInterface cc, MMInterface mm ) throws RemoteException{
+	public Client(String user,String pass,MenuInterface m, CMInterface cc, MMInterface mm) throws RemoteException{
 		this.user = user;
 		this.password = pass;
-		this.m = m;
-		this.cc = cc;
 		this.mm = mm;
+		this.cc = cc;
+		this.m = m;
 	}
 	
-	public String getUsername(){
-		return user;
-	}
-	
-	public String getCredits() throws RemoteException{
-		return cc.showCredits(user);
-	}
-	
-	public void resetCredits() throws RemoteException{
-		cc.resetCredits(user);
-	}
-	
-	public String toString(){
-		try {
-			return "Hello, "+user+ " (" + getCredits() + " credits)";
-		} catch (RemoteException e) {
-			
-		}
-		return "";
-	}
-	
-	public String login(String user, String pass) throws RemoteException{
-		return m.login(user, pass);
-		
-	}
-	
-	public String register(String user, String pass, String email) throws RemoteException{
-		return m.register(user,pass,email);
-		
-	}
-	
-	public void subscribe(String user, ClientInterface c) throws RemoteException{
-		m.subscribe(user, c);
-	}
 
 	public void receiveMessage(String s) throws RemoteException {
-		// TODO Auto-generated method stub
 		Messages.sendMessage(s, user);
 	}
 
@@ -73,10 +38,24 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		return 0;
 	}
 	
-	//Options
+	public void sendMessage(String destination, String message) throws RemoteException{
+		mm.sendMessage(user, destination, message);
+	}
+	
+	public void sendMessageAll(String message) throws RemoteException{
+		mm.sendMessageAll(user, message);
+	}
+	
+	public String getCredits() throws RemoteException{
+		return cc.showCredits(user);
+	}
+
+
+	public void resetCredits() throws RemoteException{
+		cc.resetCredits(user);
+	}
 	
 	public String[] getOnlineUsers(){
-		//LinkedList<String> result = new LinkedList<String>();
 		String aux = "";
 		String[] result = null;
 		
@@ -91,7 +70,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		}
 	}
 	
-	public String bet(String user, int code, String result, int credits){
+	public String bet(int code, String result, int credits){
 		String output;
 		
 		try {
@@ -113,11 +92,16 @@ public class Client extends UnicastRemoteObject implements ClientInterface{
 		return result;
 	}
 	
-	public void sendMessage(String destination, String message) throws RemoteException{
-		mm.sendMessage(user, destination, message);
+	public String toString(){
+		try {
+			return "Hello, "+user+ " (" + getCredits() + " credits)";
+		} catch (RemoteException e) {
+			
+		}
+		return "";
 	}
 	
-	public void sendMessageAll(String message) throws RemoteException{
-		mm.sendMessageAll(user, message);
+	public void logout() throws RemoteException{
+		m.unsubscribe(user);
 	}
 }

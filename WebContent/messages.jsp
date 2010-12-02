@@ -10,15 +10,15 @@
     <body>
         <div id="display">
             <h1>Chat</h1>
-		<div id="messagesboard" style="overflow: auto; border:thin solid #000000; position: fixed; top: 80px; left: 30px; width: 400px; height: 400px"></div>
-        <div id="input" style="position: fixed; top: 490px; left: 30px; width: 400px; height: 60px">
+			<div id="messagesboard" style="overflow: auto; border:thin solid #000000; position: fixed; top: 80px; left: 30px; width: 400px; height: 400px"></div>
+        	<div id="input" style="position: fixed; top: 490px; left: 30px; width: 400px; height: 60px">
             <input id="message" type="text" size="90"/><br/>
             Send To:<br><input type="radio" id="allusers" name="group" onClick="radioHandler('all')" value="allusers">All Users<br>
             <input type="radio" id="specUser" name="group" onClick="radioHandler('user')" >Specific User: <input type="text" id="destination" width="120" name="chosenUser">
             <br><br>
             <input type="button" onClick="sendMsg()" value="Send" />
             <input type="button" onClick="quitChat();window.location='about:blank';" value="Quit" />
-        </div>
+        </div></div>
     </body>
     <script type="text/javascript">
     	
@@ -38,14 +38,14 @@
     		var allusers = document.getElementById('allusers');
     		var specUser = document.getElementById('specUser');
     		
-    		if (allusers.checked) {
+    		if (allusers.checked && msg!="") {
     			msg = "allusers\n" + msg;
     		}
-    		else if(specUser.checked) {
+    		else if(specUser.checked && msg!="") {
     			msg = dest + "\n" + msg
     		}
     		
-    		if(allusers.checked || specUser.checked){
+    		if((allusers.checked && msg!="") || (specUser.checked && dest!="" && msg!="")){
     			comet.post("Messages", msg, function(response) {
     				// Do Nothing
     			})
