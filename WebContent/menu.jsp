@@ -10,25 +10,6 @@
 		
 	</head>
 	<body>
-		<!-- <table >
-				<td width="20%">
-					<span class="client"><session.getAttribute("user")).toString()></span>
-					<span class="reset" onClick="" onMouseUp="location.reload();">reset</span>
-				</td>
-				<td width="*"></td>
-				<td width="7%" align="center">
-					<span class="home" onclick="redirect('home.jsp');">Home</span>
-				</td>
-				<td width="7%" align="center">
-					<span class="home" onclick="redirect('news.jsp');">News</span>
-				</td>
-				<td width="15%">
-					<form action="Servlets.Login?type=logout" id="logoutForm"><span class="right" onClick="document.getElementById('logoutForm').submit();">Logout</span></form>
-				</td>
-					
-				<!--<span class="right" onClick="" onMouseUp="parent.window.location.reload();">Logout</span>
-				<!-- <span class="right" onclick="redirect('index.jsp');">Logout</span>
-		</table> -->
 		<div>
 			<span class="client"><%= session.getAttribute("user").toString()  %></span>
 			<span class="reset" onClick="window.location='Servlets.Bets?type=reset'">reset</span>

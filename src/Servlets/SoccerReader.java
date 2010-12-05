@@ -18,31 +18,15 @@ import org.xml.sax.InputSource;
 
 
 public class SoccerReader {
+
 	
-	// IMPORTANT
-	
-	// TODO 0
 	// Get your own key at http://guardian.mashery.com/apps/register
 	private String API_KEY = "59r7cb5bmshe42nfc47pgqdb";
 	
-	public static void main(String[] args) {
-		SoccerReader reader = new SoccerReader();
-		
-		// First we print the main headlines
-		System.out.println("Headlines:");
-        System.out.println("==========");
-		//String lastID = reader.latestHeadlines("Portugal", "sport");
-		//System.out.println(lastID);
-		// Then we print the main body of the first.
-		System.out.println("\nMore Info:");
-		System.out.println("==========");
-		//reader.recentBody(lastID);
-	}
-	
-	public Hashtable<String,String> latestHeadlines(String query, String section) {
+	public String [][] latestHeadlines(String query, String section) {
 		// Used to store the last ID.
 		String lastID = null;
-		Hashtable<String,String> headlines = new Hashtable<String,String>();
+		String [][] head = null;
 		
 		try {  
 			// Initiate the REST client.
@@ -82,6 +66,7 @@ public class SoccerReader {
 	        // We don't need the connection anymore once we get the nodes.
 	        connection.disconnect();
 	        
+	        head = new String[nodes.getLength()][2];
 	        // Pretty printing of output
 	        for (int i=0;i<nodes.getLength();i++) {
 	        	Node node = nodes.item(i);
@@ -89,14 +74,15 @@ public class SoccerReader {
 	        	// Fetching the attributes of the node element
 	        	String title = node.getAttributes().getNamedItem("web-title").getTextContent();
 	 			lastID = node.getAttributes().getNamedItem("id").getTextContent();
-	        	headlines.put(lastID,title);
+	 			head[i][0] = lastID;
+	 			head[i][1] = title;
 	        }
 		} catch(IOException e) { 
-	    	e.printStackTrace();
+			return head;
 	    } catch (XPathExpressionException e) {
 			e.printStackTrace();
 		}
-		return headlines;
+	    return head;
 	}	
 	
 	
@@ -122,7 +108,6 @@ public class SoccerReader {
 			 * 
 			 */
 			
-			// TODO 1
 			//http://content.guardianapis.com/LASTID?format=xml&show-fields=all&api-key=59r7cb5bmshe42nfc47pgqdb
 			//URL url = new URL("YOUR URL " + lastID + " with SHOW_FIELDS: ALL and FORMAT: XML and " + API_KEY);
 			URL url = new URL("http://content.guardianapis.com/" + lastID + "?format=xml&show-fields=all&api-key=59r7cb5bmshe42nfc47pgqdb");
@@ -147,7 +132,7 @@ public class SoccerReader {
 	        XPathFactory  factory=XPathFactory.newInstance();
 	        XPath xPath=factory.newXPath();
 	        
-			// TODO 2: Extract all <field> elements using XPath.
+			// Extract all <field> elements using XPath.
 			//NodeList nodes = (NodeList) xPath.evaluate("/YOUR/TAG/PATH", inputSource, XPathConstants.NODESET);
 	        NodeList nodes = (NodeList) xPath.evaluate("/response/content/fields/field", inputSource, XPathConstants.NODESET);
 			for (int i=0;i<nodes.getLength();i++) {
