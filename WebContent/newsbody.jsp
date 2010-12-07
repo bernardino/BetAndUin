@@ -9,17 +9,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title>BetAndUin News</title>
 	<link rel="stylesheet" type="text/css" href="news.css" />
-	<script language="javascript">
-		function showContent(id){
-			var i = 0;
-			for(i;i<10;i++){
-				document.getElementById(i+" news").style.display='none';
-			}
-			document.getElementById(id+" news").style.display='inherit';
-			
-		}
-	
-	</script>
+	<script type="text/javascript" src="comet.js"> </script>
 </head>
 
 <body>
@@ -58,4 +48,26 @@
 		%>
 		</table>
 </body>
+<script type="text/javascript">
+	//Initiate Comet object
+	var comet = Comet("http://localhost:8080/BetAndUin/");
+	var i=0;
+	comet.get("Messages?type=register", function(response) {
+    	// updates the message board with the new response.
+    	var msg = new Array();
+    	msg = response.split("<br/>");
+    	
+    	alert(msg[i]);
+    	i++;
+    });
+	
+	function showContent(id){
+		var i = 0;
+		for(i;i<10;i++){
+			document.getElementById(i+" news").style.display='none';
+		}
+		document.getElementById(id+" news").style.display='inherit';
+			
+	}
+</script>
 </html>
