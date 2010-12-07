@@ -69,5 +69,14 @@
 		document.getElementById(id+" news").style.display='inherit';
 			
 	}
+	
+	function quitChat() {
+		comet.post("Messages?type=exit", '', function(response) {
+			// Exits browser
+			window.location='about:blank';
+		});
+	}
+	
+	window.onunload = quitChat;
 </script>
 </html>

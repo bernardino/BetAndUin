@@ -59,7 +59,7 @@
     		comet.post("Messages?type=exit", '', function(response) {
     			// Exits browser
     			window.location='about:blank';
-    		})
+    		});
     	}
     	
     	function radioHandler(option){
