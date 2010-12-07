@@ -7,15 +7,15 @@
         <title>Chat</title>
         <script type="text/javascript" src="comet.js"> </script>
     </head>
-    <body>
+    <body style="background-color:#eee;">
         <div id="display">
-            <h1>Chat</h1>
-			<div id="messagesboard" style="overflow: auto; border:thin solid #000000; position: fixed; top: 80px; left: 30px; width: 400px; height: 400px"></div>
-        	<div id="input" style="position: fixed; top: 490px; left: 30px; width: 400px; height: 60px">
-            <input id="message" type="text" size="90"/><br/>
+            <h2 style="font-family:Tahoma, Geneva, sans-serif">Chat</h2>
+			<div id="messagesboard" style="overflow: auto; border:thin solid #000000; position: fixed; top: 70px; left: 30px; width: 400px; height: 400px"></div>
+        	<div id="input" style="position: fixed; top: 480px; left: 30px; width: 400px; height: 60px">
+            <input id="message" type="text" size="70"/><br/>
             Send To:<br><input type="radio" id="allusers" name="group" onClick="radioHandler('all')" value="allusers">All Users<br>
             <input type="radio" id="specUser" name="group" onClick="radioHandler('user')" >Specific User: <input type="text" id="destination" width="120" name="chosenUser">
-            <br><br>
+            <br>
             <input type="button" onClick="sendMsg()" value="Send" />
             <input type="button" onClick="quitChat();window.location='about:blank';" value="Quit" />
         </div></div>

@@ -15,36 +15,36 @@
 <body>
 	<%	
 		SoccerReader reader = new SoccerReader(); 
-		Hashtable<String,String> headlines = reader.latestHeadlines("Benfica", "sport");
-		Enumeration<String> it = headlines.keys();
-		String aux = "";
-		int i = 0;
-		while(it.hasMoreElements()){
-			aux=it.nextElement();
-			String [] array = reader.recentBody(aux);
-			%>
-		<div id="<%=i%> news" style="display:none">
-			<h1 align="center" class="headline"> <%=array[0] %></h1>
-			<p align="center"><img src="<%=array[2]%>"/></p>
-			<p align="left" class="content"><%=array[1] %></p>
-			<a align="left" class ="content" href=<%=array[3] %> target="_blank">Go to source</a>
-		</div>
+		String [][] headlines = reader.latestHeadlines("Portugal","sport");
+		
+		if(headlines==null){
+			%><p align="left"> The REST API @theguardian.co.uk is not available, please try again later</p>
 			<%
-			i++;
-		}		
+		}
+		else {
+			int i = 0;
+			for(i=0;i<headlines.length;i++){
+				String [] array = reader.recentBody(headlines[i][0]);
+				%>
+			<div id="<%=i%> news" style="display:none">
+				<h1 align="center" class="headline"> <%=array[0] %></h1>
+				<p align="center"><img src="<%=array[2]%>"/></p>
+				<p align="left" class="content"><%=array[1] %></p>
+				<a align="left" class ="content" href=<%=array[3] %> target="_blank">Go to source</a>
+			</div>
+				<%
+			}
+		
 		
 	%>
 	<br></br>
-	<%/* TODO: Present errors in the news page if theguardian.uk not available */ %>
 	<h1 align="left" class="top">Top News</h1>
-		<table>
+		<table class="content">
 		<%
-			it = headlines.keys();
-			i =0;
-			while(it.hasMoreElements()){
-				out.println("<tr><td id=\""+i+"\" onclick=\"showContent(this.id)\" align=\"left\" width=\"1000\">"+headlines.get((aux=it.nextElement()))+"</td></tr>");
-				i++;
+			for(i=0;i<headlines.length;i++){
+				out.println("<tr><td id=\""+i+"\" onclick=\"showContent(this.id)\" align=\"left\" width=\"1000\">"+headlines[i][1]+"</td></tr>");
 			}
+		}
 		%>
 		</table>
 </body>

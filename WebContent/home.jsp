@@ -8,10 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <title>BetAndUin - Home</title>
-	<frameset rows="10%,5%,*" border="0" >
+	<frameset rows="10%,*" border="0" >
 		<frame src="menu.jsp" name="menu" noresize scrolling=no />
-		<frame src="news_preview.html" name="news_preview" />
-		<frameset cols="40%,40%,20%" border="0">
+		<frameset cols="45%,40%,15%" border="0">
 			<frame src="bets.jsp" name="bets" />
 		    <frame src="messages.jsp" name="messages" />
 			<frame src="usersonline.jsp" name="usersonline"/>
