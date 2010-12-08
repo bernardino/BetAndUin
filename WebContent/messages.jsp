@@ -25,11 +25,20 @@
     	// Initiate Comet object
     	var comet = Comet("http://localhost:8080/BetAndUin/");
     	var board = document.getElementById('messagesboard');
+    	var i=0;
     	
     	// Register with Server for COMET callbacks.
     	comet.get("Messages?type=register", function(response) {
     		// updates the message board with the new response.
     		board.innerHTML = response;
+    		var msg = new Array();
+        	msg = response.split("<br/>");
+        	
+        	if(msg[i].indexOf('Congratulation')!=-1){
+        		parent.parent.menu.window.location.reload();
+        	}
+        	
+        	i++;
     	});
     
     	function sendMsg() {
