@@ -17,10 +17,14 @@ body {
 	color:black;
 	font-size:13px;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	cursor:pointer;
 }
 
 .top{
 	color:#1A1A1A;
 	font-size:20px;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	-user-select:none;
+	-moz-user-select: none;
+   	-khtml-user-select: none;
 }

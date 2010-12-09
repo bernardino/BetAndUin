@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Hashtable;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -110,7 +109,7 @@ public class SoccerReader {
 			
 			//http://content.guardianapis.com/LASTID?format=xml&show-fields=all&api-key=59r7cb5bmshe42nfc47pgqdb
 			//URL url = new URL("YOUR URL " + lastID + " with SHOW_FIELDS: ALL and FORMAT: XML and " + API_KEY);
-			URL url = new URL("http://content.guardianapis.com/" + lastID + "?format=xml&show-fields=all&api-key=59r7cb5bmshe42nfc47pgqdb");
+			URL url = new URL("http://content.guardianapis.com/" + lastID + "?format=xml&show-fields=all&api-key="+API_KEY);
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
 	        // HTTP Verb
@@ -148,10 +147,8 @@ public class SoccerReader {
 				}
 				else if(node.getAttributes().getNamedItem("name").getNodeValue().equals("short-url")){
 					info[3]= node.getTextContent();
-				}
-				
+				}	
 			}
-			
 			return info;
 			
 		} catch(IOException e) { 

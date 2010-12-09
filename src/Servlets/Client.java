@@ -12,6 +12,7 @@ import ClientRMI.ClientInterface;
 
 @SuppressWarnings("serial")
 public class Client extends UnicastRemoteObject implements ClientInterface{
+	@SuppressWarnings("unused")
 	private String user,password;
 	private MenuInterface m = null;
 	private CMInterface cc = null;

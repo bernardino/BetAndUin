@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.comet.CometEvent;
 import org.apache.catalina.comet.CometProcessor;
 
-import sun.org.mozilla.javascript.internal.Context;
 
 public class Messages extends HttpServlet implements CometProcessor {
 
