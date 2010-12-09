@@ -9,7 +9,7 @@
 
 Client user = (Client) session.getAttribute("user");
 
-if (user==null) //change this
+if (user==null)
 {
 %>
     <jsp:forward page="/index.jsp"></jsp:forward>

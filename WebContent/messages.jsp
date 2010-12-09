@@ -34,7 +34,7 @@
     		var msg = new Array();
         	msg = response.split("<br/>");
         	
-        	if(msg[i].indexOf('Congratulation')!=-1){
+        	if(msg[i].indexOf('Congratulations! ')!=-1){
         		parent.parent.menu.window.location.reload();
         	}
         	
@@ -51,7 +51,7 @@
     			msg = "allusers\n" + msg;
     		}
     		else if(specUser.checked && msg!="") {
-    			msg = dest + "\n" + msg
+    			msg = dest + "\n" + msg;
     		}
     		
     		if((allusers.checked && msg!="") || (specUser.checked && dest!="" && msg!="")){

@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +43,8 @@ public class Login extends HttpServlet{
 		String email = request.getParameter("email");
 		String login = "";
 		boolean loggedIn = false;
-		RequestDispatcher dispatcher = null;
 	    HttpSession session;
+	    
 	    String type=request.getParameter("type");
 		if(type!=null && type.equals("logout")){
 			((Client)request.getSession().getAttribute("user")).logout();
@@ -53,10 +52,10 @@ public class Login extends HttpServlet{
 			response.sendRedirect("/BetAndUin/index.jsp");
 			return;
 		}
+		
 		Client client = new Client(user,pass, m, cc, mm);
 		
 		
-		/* TODO: NÃO DEIXAR QUE O CLIENTE SE REGISTE SEM EMAIL*/
 		if(email==null){
 			/* Attempt to login */
 			login = m.login(user, pass);
