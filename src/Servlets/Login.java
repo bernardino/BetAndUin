@@ -4,10 +4,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e19d311c61da4e191da7fd9e99d0b17044ccee98
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
