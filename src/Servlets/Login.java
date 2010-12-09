@@ -34,6 +34,7 @@ public class Login extends HttpServlet{
 			m = null;
 			cc = null;
 			mm = null;
+			System.out.println("AAAA");
 		}
     }
 	
@@ -45,7 +46,7 @@ public class Login extends HttpServlet{
 		String login = "";
 		boolean loggedIn = false;
 	    HttpSession session;
-	    
+	    System.out.println("aaaaa:" +pass);
 	    String type=request.getParameter("type");
 		if(type!=null && type.equals("logout")){
 			((Client)request.getSession().getAttribute("user")).logout();
