@@ -89,7 +89,8 @@ public class Messages extends HttpServlet implements CometProcessor {
 					addClient(nickName, response);
 					
 				} else if (reqType.equalsIgnoreCase("exit")) {
-					// if the client wants to quit, we do it.					
+					// if the client wants to quit, we do it.
+					System.out.println("lulz");
 					removeClient(nickName);
 				}
 			}
@@ -131,6 +132,7 @@ public class Messages extends HttpServlet implements CometProcessor {
 		} else if (event.getEventType() == CometEvent.EventType.END) {
 			// When the clients wants to finish, we do it the same way as above.
 			event.close();
+			System.out.println("sai men");
 		}
 	}
 

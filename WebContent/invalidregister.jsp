@@ -6,9 +6,9 @@
 <link rel="stylesheet" type="text/css" href="login.css" />
 <script language="javascript">
 	function passMatch(){
-		var firstPass=document.registerForm.passcode1.value;
+		var firstPass=document.registerForm.passcode.value;
 		var secondPass=document.registerForm.passcode2.value;
-		
+
 		if(firstPass==secondPass && firstPass!=""){
 			document.getElementById("error").style.visibility='hidden';
 			if(document.registerForm.email.value!=""){
@@ -30,7 +30,7 @@
 			document.registerForm.submit_btn.disabled=true;
 		} else {
 			document.getElementById("error2").style.visibility='hidden';
-			if(document.registerForm.passcode1.value==document.registerForm.passcode2.value){
+			if(document.registerForm.passcode.value==document.registerForm.passcode2.value){
 				document.registerForm.submit_btn.disabled=false;
 			} else {
 				document.registerForm.submit_btn.disabled=true;
@@ -50,7 +50,7 @@
     </tr>
     <tr>
     	<td>Password</td>
-        <td onkeyup="passMatch()" id="firstPass"><input type="password" name="passcode1"/></td>
+        <td onkeyup="passMatch()" id="firstPass"><input type="password" name="passcode"/></td>
     </tr>
     <tr>
     	<td>Confirm Password</td>
