@@ -41,12 +41,11 @@ public class Login extends HttpServlet{
 		/* Get parameters from the post */
 		String user = request.getParameter("username");
 		String pass = request.getParameter("passcode");
-		System.out.println(pass);
 		String email = request.getParameter("email");
 		String login = "";
 		boolean loggedIn = false;
 	    HttpSession session;
-	    
+
 	    String type=request.getParameter("type");
 		if(type!=null && type.equals("logout")){
 			((Client)request.getSession().getAttribute("user")).logout();

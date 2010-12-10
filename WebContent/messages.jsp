@@ -82,7 +82,7 @@
     	
     	
     	//This makes the browser call the quitChat function before unloading(or closing) the page
-    	window.onunload = quitChat();
+    	window.onunload = quitChat;
     </script>
     
 </html>

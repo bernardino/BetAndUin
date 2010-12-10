@@ -77,6 +77,6 @@
 		});
 	}
 	
-	window.onunload = quitChat();
+	window.onunload = quitChat;
 </script>
 </html>
