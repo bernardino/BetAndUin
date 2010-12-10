@@ -89,7 +89,7 @@ public class Login extends HttpServlet{
 			}else if(!loggedIn && email==null){
 				response.sendRedirect("/BetAndUin/invalidlogin.jsp");
 			}else if(login.equals("Username already in use!")){
-				response.sendRedirect("/BetAndUin/invalidregister.jsp");
+				response.sendRedirect("/BetAndUin/invalidregister.html");
 			}
 		}
 		else{
