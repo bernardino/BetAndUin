@@ -55,10 +55,8 @@ public class Messages extends HttpServlet implements CometProcessor {
 		// Initialize the SESSION and Cache headers.
 		String sessionId = request.getSession().getId();
 		try{
-			nickName = ((Client) request.getSession().getAttribute("user")).getUser();
-			System.out.println("Nick: " + nickName); 
+			nickName = ((Client) request.getSession().getAttribute("user")).getUser(); 
 		} catch(NullPointerException e){
-			System.out.println("ups messages");
 			nickName = "";
 			return;
 		}

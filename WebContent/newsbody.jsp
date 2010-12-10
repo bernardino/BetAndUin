@@ -13,12 +13,13 @@
 </head>
 
 <body>
+	<br></br>
+	<div style="width:55%;float:right">
 	<%	
 		SoccerReader reader = new SoccerReader(); 
-		String [][] headlines = reader.latestHeadlines("Portugal","sport");
-		
+		String [][] headlines = reader.latestHeadlines("Portugal","football");
 		if(headlines==null){
-			%><p align="left"> The REST API @theguardian.co.uk is not available, please try again later</p>
+			%><div align="left" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif;"> The REST API @theguardian.co.uk is not available, please try again later</div>
 			<%
 		}
 		else {
@@ -37,16 +38,19 @@
 		
 		
 	%>
-	<br></br>
-	<h1 align="left" class="top">Top News</h1>
-		<table class="content">
-		<%
-			for(i=0;i<headlines.length;i++){
-				out.println("<tr><td id=\""+i+"\" onclick=\"showContent(this.id)\" align=\"left\" width=\"1000\">"+headlines[i][1]+"</td></tr>");
+	
+	</div>
+	<div style="width:40%;float:left">
+		<h1 align="left" class="top">Top News</h1>
+			<table class="content">
+			<%
+				for(i=0;i<headlines.length;i++){
+					out.println("<tr><td id=\""+i+"\" onclick=\"showContent(this.id)\" align=\"left\" width=\"1000\">"+headlines[i][1]+"</td></tr>");
+				}
 			}
-		}
-		%>
-		</table>
+			%>
+			</table>
+	</div>
 </body>
 <script type="text/javascript">
 	//Initiate Comet object
@@ -63,9 +67,11 @@
 	
 	function showContent(id){
 		var i = 0;
-		for(i;i<10;i++){
-			document.getElementById(i+" news").style.display='none';
-		}
+		<% if(headlines!=null){ %> 
+			for(i;i<<%=headlines.length %>;i++){
+				document.getElementById(i+" news").style.display='none';
+			}
+		<% } %>
 		document.getElementById(id+" news").style.display='inherit';
 			
 	}
