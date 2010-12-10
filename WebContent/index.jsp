@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Welcome to BetAndUin</title>
-<link rel="stylesheet" type="text/css" href="login.css" />
+<link rel="stylesheet" type="text/css" href="css/login.css" />
 </head>
 <body>
 <h1>Welcome to BetAndUin!</h1>

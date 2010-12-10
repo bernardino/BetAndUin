@@ -6,7 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Untitled Document</title>
-		<link rel="stylesheet" type="text/css" href="bets.css" />
+		<link rel="stylesheet" type="text/css" href="css/bets.css" />
 		<script language="javascript">
 		function changeBG(idName){
 			var temp = new Array();

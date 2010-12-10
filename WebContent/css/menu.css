@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-color:#1A1A1A;
+}
+
+h1 {
+	color:#abc;
+	font-size:20px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-align:center;
+}
+
+.home{
+	cursor:pointer;
+	color:white;
+	font-size:20px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-align:center;
+	-user-select:none;
+	-moz-user-select: none;
+   	-khtml-user-select: none;
+}
+.client{
+	cursor: default;
+	color:#FC3;
+	font-size:15px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-align:left;
+	user-select:none;
+	-moz-user-select: none;
+   	-khtml-user-select: none;
+}
+
+.reset{
+	cursor:pointer;
+	color:white;
+	font-size:15px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-align:left;
+	-user-select:none;
+	-moz-user-select: none;
+   	-khtml-user-select: none;
+}
+.right {
+	cursor:pointer;
+	position: absolute;
+	right:20;
+	color:white;
+	font-size:20px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	user-select:none;
+	-moz-user-select: none;
+   	-khtml-user-select: none;
+}

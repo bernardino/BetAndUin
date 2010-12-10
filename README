@@ -1,0 +1,13 @@
+Existem duas opções para correr o nosso projecto:
+
+1- 
+Importe o projecto para o eclipse com a pasta BetAndUin.
+De seguida corra o projecto num servidor tomcat.
+
+2-
+Colocar o BetAndUin.war na pasta do tomcat.
+Ter em atenção que é necessário ter alterado o server.xml como enunciado na ficha do COMET.
+E finalmente correr o servidor.
+
+
+

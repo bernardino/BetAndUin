@@ -28,8 +28,7 @@
 	    	try{
 	    		Client user = (Client)session.getAttribute("user");
 	    		result = user.getOnlineUsers();
-	    	} catch(NullPointerException e){
-	    		System.out.println("ups");
+	    	} catch(Exception e){
 	    		result=null;
 	    	}
 	

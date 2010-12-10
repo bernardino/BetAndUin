@@ -8,21 +8,32 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title>BetAndUin News</title>
-	<link rel="stylesheet" type="text/css" href="news.css" />
+	<link rel="stylesheet" type="text/css" href="css/news.css" />
 	<script type="text/javascript" src="comet.js"> </script>
 </head>
 
+	<% 
+	SoccerReader reader = new SoccerReader(); 
+	String [][] headlines = reader.latestHeadlines("Benfica","football");
+	%>
+
 <body>
-	<br></br>
-	<div style="width:55%;float:right">
 	<%	
-		SoccerReader reader = new SoccerReader(); 
-		String [][] headlines = reader.latestHeadlines("Portugal","football");
+		
 		if(headlines==null){
-			%><div align="left" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif;"> The REST API @theguardian.co.uk is not available, please try again later</div>
+			%>
+			<br/>
+			<div align="center" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif;"> The REST API @theguardian.co.uk is not available, please try again later
+			<br></br>
+			<img src="images/twitter_fail_whale.png" 
+				width="530" height="398"></img>
+			</div>
 			<%
 		}
 		else {
+			%>
+			<div style="width:55%;float:right">
+			<%
 			int i = 0;
 			for(i=0;i<headlines.length;i++){
 				String [] array = reader.recentBody(headlines[i][0]);
@@ -52,37 +63,37 @@
 			</table>
 	</div>
 </body>
-<script type="text/javascript">
-	//Initiate Comet object
-	var comet = Comet("http://localhost:8080/BetAndUin/");
-	var i=0;
-	comet.get("Messages?type=register", function(response) {
-    	// updates the message board with the new response.
-    	var msg = new Array();
-    	msg = response.split("<br/>");
-    	
-    	alert(msg[i]);
-    	i++;
-    });
-	
-	function showContent(id){
-		var i = 0;
-		<% if(headlines!=null){ %> 
-			for(i;i<<%=headlines.length %>;i++){
-				document.getElementById(i+" news").style.display='none';
-			}
-		<% } %>
-		document.getElementById(id+" news").style.display='inherit';
-			
-	}
-	
-	function quitChat() {
-		comet.post("Messages?type=exit", '', function(response) {
-			// Exits browser
-			window.location='about:blank';
-		});
-	}
-	
-	window.onunload = quitChat;
-</script>
+	<script type="text/javascript">
+		//Initiate Comet object
+		var comet = Comet("http://localhost:8080/BetAndUin/");
+		var i=0;
+		comet.get("Messages?type=register", function(response) {
+	    	// updates the message board with the new response.
+	    	var msg = new Array();
+	    	msg = response.split("<br/>");
+	    	
+	    	alert(msg[i]);
+	    	i++;
+	    });
+		
+		function showContent(id){
+			var i = 0;
+			<% if(headlines!=null){ %> 
+				for(i;i<<%=headlines.length %>;i++){
+					document.getElementById(i+" news").style.display='none';
+				}
+			<% } %>
+			document.getElementById(id+" news").style.display='inherit';
+				
+		}
+		
+		function quitChat() {
+			comet.post("Messages?type=exit", '', function(response) {
+				// Exits browser
+				window.location='about:blank';
+			});
+		}
+		
+		window.onunload = quitChat;
+	</script>
 </html>

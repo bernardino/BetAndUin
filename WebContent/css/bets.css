@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	background-color:#eee;
+}
+
+.gamesOp {
+	background-color:#666;
+	color:#FC3;
+	font-weight:bold;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	cursor:pointer;
+}
+
+.appear {
+	background-color:#FC3;
+	color:#000;
+	
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	style="visibility:collapse";
+}
